@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<body>
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1,minimum-scale=1,maximum-scale=1, user-scalable=no">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple -mobile-web-app-status-bar-style" content="black">
+        <meta name="format-de tection" content="telephone=no">
+        <meta name="applicable-device" content="mobile">
+        <title>飞机票-车次</title>
+        <meta name="Keywords" content="">
+        <meta name="Description" content="">
+        <script type="text/javascript" src="./jquery/jquery.min.js "></script>
+        <script type="text/javascript" src="./api/url.js"></script>
+
+        <script>
+            // 模糊查询商品
+            $.ajax({
+                type: 'get',
+                dataType: 'JSON',
+                contentType: 'application/json',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                data: {
+                    "signature": 'hhjhsfjhj',
+                    "timestamp": '1578570341000',
+                    "nonce": '1321564654',
+                    "echostr": 'hjhjh454dsfdfs',
+                },
+                url: dataUserUrl + '/gettoken',
+                success: function (data) {
+                    console.log('我' + JSON.stringify(data));
+                },
+                error: function () {
+                    console.log('errorxxxxxx');
+                }
+            })
+
+        </script>
+    </head>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!--pages/bless/index.wxml-->
+<view class="container">
+
+  <view class="title" wx:if="{{zanLog.length > 0}}">已收到 {{zanLog.length}} 位好友的祝福</view>
+  <view class="title" wx:if="{{zanLog.length == 0}}"> 点击下方按钮可送上祝福 </view>
+
+  <view class="friends">
+    <!-- <view bindtap='loadMoreFriends' class="face" wx:for="{{zanLog}}" wx:key="user">
+      <image src="{{item.face}}" />
+    </view> -->
+    <view bindtap='loadMoreFriends' class="face" wx:for="{{zanLog}}" wx:key="user">
+      <image src="{{item.avatarUrl}}" />
+    </view>
+  </view>
+  <view class="btn_zone">
+    <view class="fl,{{showOrHidden?'show':'hide'}}">
+      <button class='zan' bindtap='zan'>送上祝福</button>
+    </view>
+    <view class="share fr,{{showOrHidden?'show':'hide'}}">
+      <button type="default" open-type="share">分享</button>
+    </view>
+  </view>
+  <view wx:if="{{!isOfficial}}">
+    <image bindtap="showTitleLayout" class='edit_bg' style='width:20px;height:20px;margin-left:5px;' src="{{editImg}}"></image>
+  </view>
+  <view class="chat_view" wx:if="{{chatList.length > 0 && showComment}}">
+    <view class="chat_list" wx:for="{{chatList}}" wx:key="user">
+      <view class="chat_face">
+        <image src="{{item.avatarUrl}}" />
+      </view>
+      <view class="chat_words">
+        <view class="chat_meta">
+          <text class="chat_user">{{item.nickName}}</text>
+          <text class="chat_date">{{item.time}}</text>
+        </view>
+        <view>{{item.content}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="send_msg,{{showOrHidden?'show':'hide'}}" wx:if="{{showComment}}">
+    <form bindreset="foo">
+      <input placeholder="在这里输入您要说的话" class="send_ipt" bindinput="bindKeyInput" />
+      <button form-type="reset" class="send_btn">发布</button>
+    </form>
+  </view>
+  
+</view>
